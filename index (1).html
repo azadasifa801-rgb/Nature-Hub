@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Natural Hub: Discover natural remedies for skin and hair health">
+<meta name="keywords" content="natural remedies, skin care, hair care, holistic beauty">
+    <title>Natural Hub - Nature's Solutions for Skin & Hair</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3F7E09;
+            --secondary-color: #71C406;
+            --accent-color: #068F3C;
+            --background-light: #F5FEF8;
+            --text-dark: #333;
+            --text-light: #FFF;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --gradient-bg: linear-gradient(110deg, #EAFFD570, #E4FFF5A6, #FCFFF4);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-light);
+            color: var(--text-dark);
+            line-height:1.5;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:10px;
+            background: #FFF;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index:1;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding:1em;
+            transition: color 0.3s, background 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+            background: rgba(113, 196, 6, 0.1);
+        }
+
+        .theme-toggle {
+            padding:0.5em 1em;
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .theme-toggle:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --background-light: #1E1E1E;
+            --text-dark: #EEE;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+            background: var(--background-light);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode header {
+            background: #2A2A2A;
+        }
+
+        body.dark-mode nav a {
+            color: var(--secondary-color);
+        }
+
+        body.dark-mode .hero {
+            background: #333;
+        }
+
+        body.dark-mode .about {
+            background: linear-gradient(110deg, #333, #444, #555);
+        }
+
+        body.dark-mode .services .box {
+            background: #444;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .articles .art {
+            background: #555;
+            color: var(--text-light);
+        }
+
+        body.dark-mode footer {
+            background: #111;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--gradient-bg);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero button {
+            background: var(--secondary-color);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero button:hover {
+            background: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: #FFF;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            padding: 2rem;
+            background: var(--gradient-bg);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: transform 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Articles Section */
+        .articles {
+            padding: 4rem 2rem;
+            background: rgba(225, 233, 225, 0.4);
+            text-align: center;
+        }
+
+        .articles h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .art {
+            padding: 1.5rem;
+            background: #F2FFDB;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .art:hover {
+            transform: translateY(-5px);
+        }
+
+        .art h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .art p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .art a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .art a:hover {
+            text-decoration: underline;
+        }
+
+        #art1 { background: #F2FFDB; }
+        #art2 { background: #D5FEA2; }
+        #art3 { background: #A5FEA2; }
+        #art4 { background: #A2FEC8; }
+
+        /* Footer */
+        footer {
+            padding: 1.5rem;
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+/* Adjust header padding and layout for responsiveness */
+header {
+    padding: 0.8rem 1rem; /* Reduced padding from 1rem 2rem for less space */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+    /* Header adjustments for tablets and smaller desktops */
+    header {
+        padding: 0.6rem 1rem; /* Further reduced padding for medium screens */
+        flex-direction: row; /* Keep row layout but adjust spacing */
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 1.5rem; /* Slightly smaller logo */
+    }
+
+    nav {
+        gap: 1rem; /* Reduce gap between nav items */
+    }
+
+    nav a {
+        font-size: 0.9rem; /* Smaller nav text */
+        padding: 0.4rem 0.8rem;
+    }
+
+    .theme-toggle {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Hero section */
+    .hero h1 {
+        font-size: 2.5rem; /* Reduced from 3rem */
+    }
+
+    .hero p {
+        font-size: 1.1rem; /* Slightly smaller text */
+    }
+
+    .hero button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* About section */
+    .about h2 {
+        font-size: 2rem;
+    }
+
+    .about p {
+        font-size: 1rem;
+    }
+
+    /* Services section */
+    .services h2 {
+        font-size: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust for smaller screens */
+        gap: 1.5rem;
+    }
+
+    .box {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Articles section */
+    .articles h2 {
+        font-size: 2rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Tighter grid for tablets */
+        gap: 1rem;
+    }
+
+    .art {
+        padding: 1rem;
+    }
+
+    .art h3 {
+        font-size: 1.2rem;
+    }
+
+    .art p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header for mobile devices */
+    header {
+        padding: 0.5rem 0.8rem; /* Even less padding for mobile */
+        flex-direction: column; /* Stack logo and nav vertically */
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.3rem; /* Smaller logo for mobile */
+        margin-bottom: 0.5rem;
+    }
+
+    nav {
+        flex-direction: row; /* Keep nav items in a row, but wrap if needed */
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .theme-toggle {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* Hero section */
+    .hero {
+        padding: 2rem 1rem; /* Less padding for mobile */
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .hero button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* About section */
+    .about {
+        padding: 2rem 1rem;
+    }
+
+    .about h2 {
+        font-size: 1.8rem;
+    }
+
+    .about p {
+        font-size: 0.95rem;
+    }
+
+    /* Services section */
+    .services {
+        padding: 2rem 1rem;
+    }
+
+    .services h2 {
+        font-size: 1.8rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column for mobile */
+        gap: 1rem;
+    }
+
+    .box {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+
+    /* Articles section */
+    .articles {
+        padding: 2rem 1rem;
+    }
+
+    .articles h2 {
+        font-size: 1.8rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr; /* Single column for mobile */
+        gap: 1rem;
+    }
+
+    .art {
+        padding: 1rem;
+    }
+
+    .art h3 {
+        font-size: 1.1rem;
+    }
+
+    .art p {
+        font-size: 0.85rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens (e.g., older phones) */
+    header {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    nav {
+        gap: 0.3rem;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .theme-toggle {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .hero button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .about h2 {
+        font-size: 1.6rem;
+    }
+
+    .about p {
+        font-size: 0.9rem;
+    }
+
+    .services h2 {
+        font-size: 1.6rem;
+    }
+
+    .articles h2 {
+        font-size: 1.6rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">🌿 Natural <span>Hub</span></h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#blogs">Blogs</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Natural Hub</h1>
+        <p>Welcome to Natural Hub, your go-to blog for discovering nature's solutions to various big and small skin and hair health issues.</p>
+        <button>Follow Me</button>
+    </section>
+
+    <section id="about" class="about">
+        <h2>All About Natural Hub</h2>
+        <p>In this website, I am dedicated to sharing insightful articles that highlight natural remedies and holistic approaches for various beauty issues and much more. Whether you're looking for herbal treatments, dietary tips, skin care, hair care, or wellness strategies, I am passionate about empowering you with knowledge. Join me on this journey towards beauty and wellness through nature's bounty—welcome to Natural Hub!</p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>What We Offer & How</h2>
+        <div class="services-grid">
+            <div class="box">Easy and cheat solutions for various skin, hair, and health issues.</div>
+            <div class="box">Deep and meaningful knowledge provided to you.</div>
+            <div class="box">Short, fast, and knowledgeable articles on the go.</div>
+            <div class="box">Each article provided with lots of web searches and scientific facts.</div>
+            <div class="box">Solutions and hacks suggested with personal experience—no fake or false suggestions.</div>
+        </div>
+    </section>
+
+
+    <footer>
+        © 2025 All Rights Reserved. Natural Hub.
+    </footer>
+
+    <script>
+     function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+     const button = document.querySelector('.theme-toggle');
+button.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+        }
+    </script>
+</body>
+</html>
